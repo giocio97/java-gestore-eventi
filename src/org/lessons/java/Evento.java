@@ -9,7 +9,6 @@ public class Evento {
 	private LocalDate data;
 	private int postiTot, postiPrenotati;
 	private LocalDate dataAttuale = LocalDate.now();
-	private DateTimeFormatter dataf = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALY);
 
 	public Evento(String titolo, LocalDate data, int postiTot) throws Exception {
 		super();
@@ -62,6 +61,12 @@ public class Evento {
 
 	}
 
+	public String getDataFormattata(LocalDate data) {
+		DateTimeFormatter formattaData = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALY);
+		String dataFormattata = data.format(formattaData);
+		return dataFormattata;
+	}
+
 	public void setData(LocalDate data) {
 
 		this.data = data;
@@ -81,7 +86,7 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Evento [titolo=" + titolo + ", data=" + data.format(dataf) + "]";
+		return "Evento [titolo=" + titolo + ", data=" + getDataFormattata(data) + "]";
 	}
 
 }

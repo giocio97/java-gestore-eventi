@@ -18,25 +18,26 @@ public class Main {
 		int postiDisdetti = 0;
 		boolean fareDisdetta = true;
 
+		System.out.print("inserisci nome evento: ");
+		titolo = s.nextLine();
+
+		System.out.print("inserisci l'anno dell' evento (yyyy): ");
+		dataAnno = Integer.parseInt(s.nextLine());
+
+		System.out.print("inserisci il mese dell' evento (da 1 a 12): ");
+		dataMese = Integer.parseInt(s.nextLine());
+
+		System.out.print("inserisci giorno dell' evento: ");
+		dataGiorno = Integer.parseInt(s.nextLine());
+
+		System.out.print("inserisci il numero di posti totali dell'evento: ");
+		postiTot = s.nextInt();
+
+		LocalDate dataEvento = LocalDate.of(dataAnno, dataMese, dataGiorno);
+		Evento event;
+
 		try {
-			System.out.print("inserisci nome evento: ");
-			titolo = s.nextLine();
-
-			System.out.print("inserisci l'anno dell' evento (yyyy): ");
-			dataAnno = Integer.parseInt(s.nextLine());
-
-			System.out.print("inserisci il mese dell' evento (da 1 a 12): ");
-			dataMese = Integer.parseInt(s.nextLine());
-
-			System.out.print("inserisci giorno dell' evento: ");
-			dataGiorno = Integer.parseInt(s.nextLine());
-
-			System.out.print("inserisci il numero di posti totali dell'evento: ");
-			postiTot = s.nextInt();
-
-			LocalDate dataEvento = LocalDate.of(dataAnno, dataMese, dataGiorno);
-			Evento event = new Evento(titolo, dataEvento, postiTot);
-
+			event = new Evento(titolo, dataEvento, postiTot);
 			while (farePrenotazione) {
 				try {
 					System.out.print("Vuoi prenotare dei posti? (si/no)");
@@ -103,10 +104,9 @@ public class Main {
 
 			System.out.println("Posti prenotati: " + event.getPostiPrenotati());
 			System.out.println("Posti disponibili: " + event.getPostiDisponibili());
-
-		} catch (Exception e) {
-			System.out.println("uno o più campi non sonostati compilati");
-			e.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 		s.close();
