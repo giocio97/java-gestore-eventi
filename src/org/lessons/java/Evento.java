@@ -22,8 +22,8 @@ public class Evento {
 	}
 
 	public void validazioneData(LocalDate data) throws Exception {
-		if (dataAttuale.isBefore(data))
-			throw new Exception();
+		if (data.isBefore(dataAttuale))
+			throw new Exception("la data inserita è gia passata");
 	}
 
 	public void validazionePostiTotali(int postiTot) throws Exception {

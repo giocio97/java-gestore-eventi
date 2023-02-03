@@ -31,7 +31,7 @@ public class Main {
 		dataGiorno = Integer.parseInt(s.nextLine());
 
 		System.out.print("inserisci il numero di posti totali dell'evento: ");
-		postiTot = s.nextInt();
+		postiTot = Integer.parseInt(s.nextLine());
 
 		LocalDate dataEvento = LocalDate.of(dataAnno, dataMese, dataGiorno);
 		Evento event;
