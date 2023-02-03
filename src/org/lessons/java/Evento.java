@@ -11,8 +11,7 @@ public class Evento {
 	private LocalDate dataAttuale = LocalDate.now();
 	private DateTimeFormatter dataf = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALY);
 
-	public Evento(String titolo, LocalDate data, int postiTot, int postiPrenotati, LocalDate dataAttuale)
-			throws Exception {
+	public Evento(String titolo, LocalDate data, int postiTot) throws Exception {
 		super();
 		this.titolo = titolo;
 		this.data = data;
@@ -33,7 +32,7 @@ public class Evento {
 			throw new Exception();
 	}
 
-	public void prenota(int postiPrenotati) throws Exception {
+	public void prenota(LocalDate data) throws Exception {
 		if (dataAttuale.isBefore(data) || (postiTot <= postiPrenotati))
 			throw new Exception();
 		else
@@ -41,7 +40,7 @@ public class Evento {
 
 	}
 
-	public void disdici(int postiPrenotati) throws Exception {
+	public void disdici(LocalDate data) throws Exception {
 		if (dataAttuale.isBefore(data) || (postiTot <= postiPrenotati))
 			throw new Exception();
 		else
@@ -74,6 +73,10 @@ public class Evento {
 
 	public int getPostiPrenotati() {
 		return postiPrenotati;
+	}
+
+	public int getPostiDisponibili() {
+		return postiTot - postiPrenotati;
 	}
 
 	@Override
